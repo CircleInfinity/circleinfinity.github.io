@@ -25,6 +25,16 @@ var x = setInterval(function() {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
+
+    // Output the result in an element with id="demo"
+    document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo1").innerHTML = "EXPIRED";
+    }
 }, 1000);
 
 function CopyToClipboard(containerid) {

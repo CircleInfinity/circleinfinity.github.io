@@ -1821,14 +1821,14 @@ function kopiraj() {
   copyText.select();
   document.execCommand("Copy");
   Snackbar({
-    message: "<strong>Copied success.</strong> <br> Send this link to invite your friends to our airdrop. <br> Receive 50% BNB + 50% BUNI of all claims and buy",
+    message: "<strong>Copied success.</strong> <br> Send this link to invite your friends to our airdrop. <br> Receive 50% BNB + 50% CIT of all claims and buy",
     status: "success",
     position: "tr",
   });
 }
 
 function copyContract() {
-  javascript: copyToClipboard('BUNI');
+  javascript: copyToClipboard('CIT');
   Snackbar({
     message: "<strong>Copied success.</strong> <br>Contract Address BabyUnicorn copied",
     status: "success",
