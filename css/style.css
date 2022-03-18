@@ -2803,7 +2803,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
   }
 
   header.mobile-header {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 
   header.header {
