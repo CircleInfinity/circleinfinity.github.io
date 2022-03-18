@@ -16,10 +16,12 @@ $(window).on('load', function() {
       
       var activeTab = $(this).attr('href');
         $(activeTab).addClass('section-visible');
-      return false;
+      // return false;
     });
 
     if(window.location.hash) {
+      $('.anchor-menu li a').removeClass('active');
+      $('.anchor-menu li a[href^="'+ window.location.hash + '"]').addClass('active');
         $('.animated-section').removeClass('section-visible');
         $(window.location.hash).addClass('section-visible');
     } else {

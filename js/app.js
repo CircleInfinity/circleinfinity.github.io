@@ -1737,8 +1737,16 @@ function calculate() {
 
 }
 
-function addToWallet() {
-
+const addToWallet = async () => {
+  await loadweb3();
+  if (addr == undefined) {
+    Swal.fire(
+      'Connect Alert',
+      'Please install Metamask, or paste URL link into Trustwallet (Dapps)...',
+      'error'
+    )
+    return
+  }
 
   try {
     web3.currentProvider.sendAsync({
@@ -1830,7 +1838,7 @@ function kopiraj() {
 function copyContract() {
   javascript: copyToClipboard('CIT');
   Snackbar({
-    message: "<strong>Copied success.</strong> <br>Contract Address BabyUnicorn copied",
+    message: "<strong>Copied success.</strong> <br>Contract Address CircleInfinity copied",
     status: "success",
     position: "tr",
   });
