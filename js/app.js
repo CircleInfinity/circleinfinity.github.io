@@ -2605,9 +2605,9 @@ const addToWallet = async () => {
 }
 
 
-function getreflink() {
-  var referaladd = document.getElementById('refaddress').value;
-  if (!document.getElementById('refaddress').value) {
+function getreflink(id='') {
+  var referaladd = document.getElementById('refaddress' + id).value;
+  if (!document.getElementById('refaddress' + id).value) {
     Swal.fire(
       'Referral Alert',
       'Please Enter Your BEP20 Address.',
@@ -2621,7 +2621,7 @@ function getreflink() {
         'error'
       )
     } else {
-      document.getElementById('refaddress').value = `${document.location.origin}/?ref=` + document.getElementById('refaddress').value;
+      document.getElementById('refaddress' + id).value = `${document.location.origin}/?ref=` + document.getElementById('refaddress' + id).value;
     }
   }
 }
