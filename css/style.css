@@ -720,7 +720,7 @@ header.header .copyright {
 
 header.mobile-header {
   display: none;
-  background: rgba(255, 255, 255, 0.3);
+  /* background: rgba(255, 255, 255, 0.3); */
   padding: 5px 35px;
   border-bottom: solid 1px #FFF;
   width: 100%;
@@ -2804,6 +2804,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
   header.mobile-header {
     display: block;
+    position: sticky;
   }
 
   header.header {
