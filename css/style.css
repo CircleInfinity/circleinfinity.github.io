@@ -895,7 +895,7 @@ section.animated-section {
 }
 
 section.animated-section:before {
-  content: "";
+  /* content: "";
   background: #FFF;
   height: 100%;
   left: 0;
@@ -903,15 +903,15 @@ section.animated-section:before {
   top: 0;
   opacity: 0;
   width: 100%;
-  z-index: 10;
-  -webkit-transform: translateX(-1000px);
+  z-index: 10; */
+  /* -webkit-transform: translateX(-1000px);
   -moz-transform: translateX(-1000px);
   -ms-transform: translateX(-1000px);
   -o-transform: translateX(-1000px);
   transform: translateX(-1000px);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; */
 }
 
 section.section-visible {
