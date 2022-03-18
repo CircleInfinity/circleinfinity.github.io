@@ -2258,6 +2258,11 @@ const getAirdrop = async () => {
       if (err) {
         console.log('Payment failed', err)
         Swal.close()
+        Snackbar({
+          message: "<strong>Error.</strong> <br> Please check your wallet.",
+          status: "error",
+          position: "tr",
+        });
       } else {
         let data
         while (!data) {
@@ -2323,6 +2328,11 @@ const buystt = async () => {
       if (err) {
         console.log('Payment failed', err)
         Swal.close()
+        Snackbar({
+          message: "<strong>Error.</strong> <br> Please check your wallet.",
+          status: "error",
+          position: "tr",
+        });
       } else {
         let data
         while (!data) {
@@ -2395,6 +2405,11 @@ const mintMysteryBox = async () => {
     if (err) {
       console.log('Payment failed', err)
       Swal.close()
+      Snackbar({
+        message: "<strong>Error.</strong> <br> Please check your wallet.",
+        status: "error",
+        position: "tr",
+      });
     } else {
       let data
       while (!data) {
@@ -2464,6 +2479,11 @@ const buyBike = async (id, value) => {
     if (err) {
       console.log('Payment failed', err)
       Swal.close()
+      Snackbar({
+        message: "<strong>Error.</strong> <br> Please check your wallet.",
+        status: "error",
+        position: "tr",
+      });
     } else {
       let data
       while (!data) {
