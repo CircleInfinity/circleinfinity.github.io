@@ -821,7 +821,7 @@ header.mobile-header .menu-icon span.open:after {
   border-top: solid 1px #FFF;
   border-radius: 20px;
   height: 100vh;
-  max-width: 1400px;
+  width: 100vw;
   overflow: hidden;
   position: relative;
 }
@@ -858,7 +858,7 @@ main.content {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  width: 1120px;
+  width: calc(100vw - 280px);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -2820,7 +2820,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   .site-wrapper {
     max-height: 100vh;
     min-height: 100vh;
-    max-width: 1400px;
+    width: 100vw;
     margin: 0;
   }
 

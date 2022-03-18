@@ -443,6 +443,6 @@ $(function(){
         }
       );
 
-      $('.section-inner').each((index, element) => new SimpleBar(element), { autoHide: false });
+      $('.section-inner').each((index, element) => new SimpleBar(element), { autoHide: true });
 
 });
