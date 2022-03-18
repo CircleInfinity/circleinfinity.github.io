@@ -720,7 +720,9 @@ header.header .copyright {
 
 header.mobile-header {
   display: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: #A6ADBF;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   padding: 5px 35px;
   border-bottom: solid 1px #FFF;
   width: 100%;
