@@ -931,21 +931,21 @@ section.section-visible:before {
   transform: translateX(1600px);
 }
 
-.animated-section-rotateRoomLeftOut,
+/* .animated-section-rotateRoomLeftOut,
 section.animated-section {
   -webkit-transform-origin: 100% 50%;
   transform-origin: 100% 50%;
   -webkit-animation: rotateRoomLeftOut 0.4s both ease;
   animation: rotateRoomLeftOut 0.4s both ease;
-}
+} */
 
-.animated-section-rotateRoomLeftIn,
+/* .animated-section-rotateRoomLeftIn,
 section.section-visible {
   -webkit-transform-origin: 0% 50%;
   transform-origin: 0% 50%;
   -webkit-animation: rotateRoomLeftIn 0.4s both ease;
   animation: rotateRoomLeftIn 0.4s both ease;
-}
+} */
 
 @-webkit-keyframes rotateRoomLeftOut {
   to {
