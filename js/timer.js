@@ -1,5 +1,15 @@
+function addDays(date, days) {
+  const copy = new Date(Number(date))
+  copy.setDate(date.getDate() + days)
+  return copy
+}
+
 // Set the date we're counting down to
-var countDownDate = new Date("Mar 28, 2022 15:37:25").getTime();
+var countDownDate = new Date("Mar 28, 2022 15:37:25");
+
+$('.end-date').text(`"${addDays(countDownDate, 1).toDateString()}"`)
+
+countDownDate = countDownDate.getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
