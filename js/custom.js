@@ -11,10 +11,10 @@ $(window).on('load', function() {
     // Click function
     $('.anchor-menu li a, a.section-link').on('click', function(){
       $('.anchor-menu li a').removeClass('active');
-      $(this).addClass('active');
       $('.animated-section').removeClass('section-visible');
       
       var activeTab = $(this).attr('href');
+      $('.anchor-menu li a[href^="'+ activeTab + '"]').addClass('active');
         $(activeTab).addClass('section-visible');
       // return false;
     });
