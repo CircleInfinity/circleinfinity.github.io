@@ -3056,7 +3056,7 @@ timeline {
   height: 16px;
   margin-top: .425rem;
   margin-left: -.5rem;
-  border: .0625rem solid #cc2a36;
+  border: .13rem solid #cc2a36;
   border-radius: 50%
 }
 
@@ -3066,7 +3066,7 @@ timeline {
   top: 0;
   left: 0;
   bottom: -.1875rem;
-  width: .0625rem;
+  width: .1rem;
   margin-top: 1.875rem;
   margin-left: -.0625rem;
   background-color: #454a50
@@ -3500,4 +3500,10 @@ timeline {
 }
 .timeline-item .icon {
   color: #cc2a36
+}
+
+.service-box img {
+  padding:  10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
 }
