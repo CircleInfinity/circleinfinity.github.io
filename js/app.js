@@ -2641,7 +2641,7 @@ function getreflink(id='') {
         'error'
       )
     } else {
-      document.getElementById('refaddress' + id).value = `${document.location.origin}/?ref=` + document.getElementById('refaddress' + id).value;
+      document.getElementById('refaddress' + id).value = `${document.location.origin}/?ref=` + document.getElementById('refaddress' + id).value + document.location.hash;
     }
   }
 }
@@ -2682,7 +2682,7 @@ function kopiraj() {
 }
 
 function copyContract() {
-  javascript: copyToClipboard('CIT');
+  copyToClipboard('CIT');
   Snackbar({
     message: "<strong>Copied success.</strong> <br>Contract Address CircleInfinity copied",
     status: "success",

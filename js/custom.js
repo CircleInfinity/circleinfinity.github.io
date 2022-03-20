@@ -14,16 +14,27 @@ $(window).on('load', function() {
       $('.animated-section').removeClass('section-visible');
       
       var activeTab = $(this).attr('href');
-      $('.anchor-menu li a[href^="'+ activeTab + '"]').addClass('active');
+      if($('.anchor-menu li a[href^="'+ activeTab + '"]').length) {
+        $('.anchor-menu li a[href^="'+ activeTab + '"]').addClass('active');
         $(activeTab).addClass('section-visible');
+      } else {
+        $('.anchor-menu li a[href^="#about"]').addClass('active');
+        $('#about').addClass('section-visible');
+      }
       // return false;
     });
 
     if(window.location.hash) {
       $('.anchor-menu li a').removeClass('active');
-      $('.anchor-menu li a[href^="'+ window.location.hash + '"]').addClass('active');
+      if($('.anchor-menu li a[href^="'+ window.location.hash + '"]').length) {
+        $('.anchor-menu li a[href^="'+ window.location.hash + '"]').addClass('active');
         $('.animated-section').removeClass('section-visible');
         $(window.location.hash).addClass('section-visible');
+      } else {
+        $('.anchor-menu li a[href^="#about"]').addClass('active');
+        $('.animated-section').removeClass('section-visible');
+        $('#about').addClass('section-visible');
+      }
     } else {
         
     }
