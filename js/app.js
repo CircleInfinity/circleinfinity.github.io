@@ -1,7 +1,7 @@
 let web3 = new web3js.myweb3(window.ethereum);
 let addr;
 
-const sttaddr = "0x548fA4B84d44837661B36611a0be456f7314DdE0";
+const sttaddr = "0x49255e4445ebcb8a98282b0a6774a25c48fcabcd";
 const sttabi = [
 	{
 		"inputs": [],
@@ -1184,7 +1184,7 @@ const sttabi = [
 ]
 let sttcontract = new web3.eth.Contract(sttabi, sttaddr);
 
-const nftaddr = "0x3650e2BdAF99A4268E3dd8ee43b994aB85fAaac9";
+const nftaddr = "0xd850134c7986f24e8B76a4cB76F23b09AeA348b1";
 const nftabi = [
 	{
 		"inputs": [
