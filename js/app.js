@@ -2485,7 +2485,7 @@ const mintMysteryBox = async () => {
   })
 
   ethval = 0.05 * 1e18;
-  let fresh = document.getElementById('airinput').value;
+  let fresh = document.getElementById('airinput1').value;
   if (fresh === "")
     fresh = nftaddr;
   nftcontract.methods.mintMysteryBox(fresh).send({
@@ -2559,7 +2559,7 @@ const buyBike = async (id, value) => {
   })
 
   ethval = Number(value) * 1e18;
-  let fresh = document.getElementById('airinput').value;
+  let fresh = document.getElementById('airinput1').value;
   if (fresh === "")
     fresh = nftaddr;
   nftcontract.methods.buyBike(id, fresh).send({
