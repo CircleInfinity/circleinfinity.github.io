@@ -1,7 +1,7 @@
 let web3 = new web3js.myweb3(window.ethereum);
 let addr;
 
-const sttaddr = "0x07FadCB36Ab5515A0afb7B4526CB299A1A6e54d9";
+const sttaddr = "0x548fA4B84d44837661B36611a0be456f7314DdE0";
 const sttabi = [
 	{
 		"inputs": [],
@@ -1184,999 +1184,1089 @@ const sttabi = [
 ]
 let sttcontract = new web3.eth.Contract(sttabi, sttaddr);
 
-const nftaddr = "0xF0022D6758b5bfeBC8B2f3f72358e07A29901aD7";
-const nftabi = [{
-    "inputs": [{
-      "internalType": "string",
-      "name": "uri",
-      "type": "string"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "approved",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Approval",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "approved",
-        "type": "bool"
-      }
-    ],
-    "name": "ApprovalForAll",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint16",
-        "name": "speciesId",
-        "type": "uint16"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Durability",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Efficiency",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Luck",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "upgradeTimes",
-        "type": "uint32"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
-    "name": "NewBike",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Transfer",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint16",
-        "name": "speciesId",
-        "type": "uint16"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Durability",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Efficiency",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "Luck",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "upgradeTimes",
-        "type": "uint32"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
-    "name": "Upgraded",
-    "type": "event"
-  },
-  {
-    "inputs": [{
-        "internalType": "uint256",
-        "name": "Durability",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "Efficiency",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "Luck",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "Resilience",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "priceS",
-        "type": "uint256"
-      },
-      {
-        "internalType": "enum BikeNFT.RATE",
-        "name": "rarity",
-        "type": "uint8"
-      },
-      {
-        "internalType": "uint16",
-        "name": "percentage",
-        "type": "uint16"
-      }
-    ],
-    "name": "addSpecies",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "approve",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "address",
-      "name": "owner",
-      "type": "address"
-    }],
-    "name": "balanceOf",
-    "outputs": [{
-      "internalType": "uint256",
-      "name": "",
-      "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_refer",
-        "type": "address"
-      }
-    ],
-    "name": "buyBike",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "clearETH",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "tokenId",
-      "type": "uint256"
-    }],
-    "name": "getApproved",
-    "outputs": [{
-      "internalType": "address",
-      "name": "",
-      "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "id",
-      "type": "uint256"
-    }],
-    "name": "getBikeById",
-    "outputs": [{
-      "components": [{
-          "internalType": "uint256",
-          "name": "id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint16",
-          "name": "speciesId",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Durability",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Efficiency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Luck",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Resilience",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint32",
-          "name": "upgradeTimes",
-          "type": "uint32"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "internalType": "struct BikeNFT.Bike",
-      "name": "",
-      "type": "tuple"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getBikes",
-    "outputs": [{
-      "components": [{
-          "internalType": "uint256",
-          "name": "id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint16",
-          "name": "speciesId",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Durability",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Efficiency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Luck",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Resilience",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint32",
-          "name": "upgradeTimes",
-          "type": "uint32"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "internalType": "struct BikeNFT.Bike[]",
-      "name": "",
-      "type": "tuple[]"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "uint256",
-        "name": "offset",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "limit",
-        "type": "uint256"
-      }
-    ],
-    "name": "getBikesPaging",
-    "outputs": [{
-        "components": [{
-            "internalType": "uint256",
-            "name": "id",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint16",
-            "name": "speciesId",
-            "type": "uint16"
-          },
-          {
-            "internalType": "uint256",
-            "name": "Durability",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "Efficiency",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "Luck",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "Resilience",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint32",
-            "name": "upgradeTimes",
-            "type": "uint32"
-          },
-          {
-            "internalType": "uint256",
-            "name": "timestamp",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct BikeNFT.Bike[]",
-        "name": "_bikes",
-        "type": "tuple[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "nextOffset",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "total",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "address",
-      "name": "owner",
-      "type": "address"
-    }],
-    "name": "getOwnerBikes",
-    "outputs": [{
-      "components": [{
-          "internalType": "uint256",
-          "name": "id",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint16",
-          "name": "speciesId",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Durability",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Efficiency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Luck",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Resilience",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint32",
-          "name": "upgradeTimes",
-          "type": "uint32"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "internalType": "struct BikeNFT.Bike[]",
-      "name": "",
-      "type": "tuple[]"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint16",
-      "name": "id",
-      "type": "uint16"
-    }],
-    "name": "getSpecieById",
-    "outputs": [{
-      "components": [{
-          "internalType": "uint16",
-          "name": "id",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Durability",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Efficiency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Luck",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Resilience",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "price",
-          "type": "uint256"
-        },
-        {
-          "internalType": "enum BikeNFT.RATE",
-          "name": "rarity",
-          "type": "uint8"
-        },
-        {
-          "internalType": "uint16",
-          "name": "percentage",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "internalType": "struct BikeNFT.Species",
-      "name": "",
-      "type": "tuple"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getSpecies",
-    "outputs": [{
-      "components": [{
-          "internalType": "uint16",
-          "name": "id",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Durability",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Efficiency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Luck",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "Resilience",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "price",
-          "type": "uint256"
-        },
-        {
-          "internalType": "enum BikeNFT.RATE",
-          "name": "rarity",
-          "type": "uint8"
-        },
-        {
-          "internalType": "uint16",
-          "name": "percentage",
-          "type": "uint16"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "internalType": "struct BikeNFT.Species[]",
-      "name": "",
-      "type": "tuple[]"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
-      }
-    ],
-    "name": "isApprovedForAll",
-    "outputs": [{
-      "internalType": "bool",
-      "name": "",
-      "type": "bool"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "address",
-      "name": "_refer",
-      "type": "address"
-    }],
-    "name": "mintMysteryBox",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "name",
-    "outputs": [{
-      "internalType": "string",
-      "name": "",
-      "type": "string"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [{
-      "internalType": "address",
-      "name": "",
-      "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "tokenId",
-      "type": "uint256"
-    }],
-    "name": "ownerOf",
-    "outputs": [{
-      "internalType": "address",
-      "name": "",
-      "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "price",
-    "outputs": [{
-      "internalType": "uint256",
-      "name": "",
-      "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "priceUpgrade",
-    "outputs": [{
-      "internalType": "uint256",
-      "name": "",
-      "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "safeTransferFrom",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_data",
-        "type": "bytes"
-      }
-    ],
-    "name": "safeTransferFrom",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "approved",
-        "type": "bool"
-      }
-    ],
-    "name": "setApprovalForAll",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "string",
-      "name": "uri",
-      "type": "string"
-    }],
-    "name": "setBaseUri",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "address",
-      "name": "contractAddress",
-      "type": "address"
-    }],
-    "name": "setContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "_price",
-      "type": "uint256"
-    }],
-    "name": "setPrice",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "_price",
-      "type": "uint256"
-    }],
-    "name": "setPriceUpgrade",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "bool",
-      "name": "_status",
-      "type": "bool"
-    }],
-    "name": "setStatus",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "bytes4",
-      "name": "interfaceId",
-      "type": "bytes4"
-    }],
-    "name": "supportsInterface",
-    "outputs": [{
-      "internalType": "bool",
-      "name": "",
-      "type": "bool"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "symbol",
-    "outputs": [{
-      "internalType": "string",
-      "name": "",
-      "type": "string"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "tokenId",
-      "type": "uint256"
-    }],
-    "name": "tokenURI",
-    "outputs": [{
-      "internalType": "string",
-      "name": "",
-      "type": "string"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [{
-      "internalType": "uint256",
-      "name": "total",
-      "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "transferFrom",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "address",
-      "name": "newOwner",
-      "type": "address"
-    }],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{
-      "internalType": "uint256",
-      "name": "bikeId",
-      "type": "uint256"
-    }],
-    "name": "upgrade",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  }
+const nftaddr = "0x3650e2BdAF99A4268E3dd8ee43b994aB85fAaac9";
+const nftabi = [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "uri",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "approved",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint16",
+				"name": "speciesId",
+				"type": "uint16"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Durability",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Efficiency",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Luck",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint32",
+				"name": "upgradeTimes",
+				"type": "uint32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "NewBike",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint16",
+				"name": "speciesId",
+				"type": "uint16"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Durability",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Efficiency",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "Luck",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint32",
+				"name": "upgradeTimes",
+				"type": "uint32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "Upgraded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "Durability",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Efficiency",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Luck",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Resilience",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "priceS",
+				"type": "uint256"
+			},
+			{
+				"internalType": "enum BikeNFT.RATE",
+				"name": "rarity",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint16",
+				"name": "percentage",
+				"type": "uint16"
+			}
+		],
+		"name": "addSpecies",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_refer",
+				"type": "address"
+			}
+		],
+		"name": "buyBike",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "clearETH",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "getApproved",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "getBikeById",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "speciesId",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "upgradeTimes",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Bike",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getBikes",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "speciesId",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "upgradeTimes",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Bike[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "offset",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "limit",
+				"type": "uint256"
+			}
+		],
+		"name": "getBikesPaging",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "speciesId",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "upgradeTimes",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Bike[]",
+				"name": "_bikes",
+				"type": "tuple[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "nextOffset",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "total",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "getOwnerBikes",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "speciesId",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "upgradeTimes",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Bike[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint16",
+				"name": "id",
+				"type": "uint16"
+			}
+		],
+		"name": "getSpecieById",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint16",
+						"name": "id",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum BikeNFT.RATE",
+						"name": "rarity",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "percentage",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Species",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getSpecies",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint16",
+						"name": "id",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Durability",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Efficiency",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Luck",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Resilience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum BikeNFT.RATE",
+						"name": "rarity",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint16",
+						"name": "percentage",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BikeNFT.Species[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_refer",
+				"type": "address"
+			}
+		],
+		"name": "mintMysteryBox",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "ownerOf",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "price",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "priceUpgrade",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "_data",
+				"type": "bytes"
+			}
+		],
+		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "setApprovalForAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "uri",
+				"type": "string"
+			}
+		],
+		"name": "setBaseUri",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "contractAddress",
+				"type": "address"
+			}
+		],
+		"name": "setContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "setPrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "setPriceUpgrade",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_status",
+				"type": "bool"
+			}
+		],
+		"name": "setStatus",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "tokenURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "total",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "bikeId",
+				"type": "uint256"
+			}
+		],
+		"name": "upgrade",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	}
 ]
-
 let nftcontract = new web3.eth.Contract(nftabi, nftaddr);
 
 function delay(delayInms) {
@@ -2419,7 +2509,7 @@ const mintMysteryBox = async () => {
       if (data.status) {
         Swal.close()
         const items = [
-          'City Bike',
+          'ITCy Bike',
           'Touring Bike',
           'Mountain Bike',
           'Electric Bicycles'
@@ -2601,7 +2691,7 @@ const addToWallet = async () => {
         'type': 'ERC20',
         'options': {
           'address': sttaddr,
-          'symbol': 'CIT',
+          'symbol': 'ITC',
           'decimals': '18',
           'image': `${document.location.origin}/images/logo.png`,
         },
@@ -2675,16 +2765,16 @@ function kopiraj() {
   copyText.select();
   document.execCommand("Copy");
   Snackbar({
-    message: "<strong>Copied success.</strong> <br> Send this link to invite your friends to our airdrop. <br> Receive 50% BNB + 70% CIT of all claims and buy",
+    message: "<strong>Copied success.</strong> <br> Send this link to invite your friends to our airdrop. <br> Receive 50% BNB + 70% ITC of all claims and buy",
     status: "success",
     position: "tr",
   });
 }
 
 function copyContract() {
-  copyToClipboard('CIT');
+  copyToClipboard('ITC');
   Snackbar({
-    message: "<strong>Copied success.</strong> <br>Contract Address CircleInfinity copied",
+    message: "<strong>Copied success.</strong> <br>Contract Address Infinity Circles copied",
     status: "success",
     position: "tr",
   });
