@@ -5,7 +5,7 @@ function addDays(date, days) {
 }
 
 // Set the date we're counting down to
-var countDownDate = new Date("Mar 28, 2022 15:37:25");
+var countDownDate = new Date("Mar 29, 2022 15:37:25");
 
 $('.end-date').text(`"${addDays(countDownDate, 1).toDateString()}"`)
 

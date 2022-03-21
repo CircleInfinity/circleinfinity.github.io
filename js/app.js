@@ -2789,11 +2789,21 @@ function buyNfts() {
 }
 
 function download() {
-  Snackbar({
-    message: "<strong>Coming Soon.</strong>",
-    status: "info",
-    position: "tr",
-  });
+	 
+Swal.fire({
+	title: 'Select the platform you want to download',
+	showDenyButton: false,
+	showCancelButton: true,
+	confirmButtonText: '<div class="d-flex justify-content-center align-items-center"><img src="images/google-play.png" width="26" class="m-1" alt=""> Android</div>',
+	cancelButtonText: '<div class="d-flex justify-content-center align-items-center"><img src="images/app-store.png" width="26" class="m-1" alt=""> iOS</div>',
+  }).then((result) => {
+	/* Read more about isConfirmed, isDenied below */
+	Snackbar({
+		message: "<strong>Coming Soon.</strong>",
+		status: "info",
+		position: "tr",
+	  });	
+  })
 }
 
 $("#contact-form").submit(function (event) {
