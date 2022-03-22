@@ -2798,11 +2798,13 @@ Swal.fire({
 	cancelButtonText: '<div class="d-flex justify-content-center align-items-center"><img src="images/app-store.png" width="26" class="m-1" alt=""> iOS</div>',
   }).then((result) => {
 	/* Read more about isConfirmed, isDenied below */
-	Snackbar({
-		message: "<strong>Coming Soon.</strong>",
-		status: "info",
-		position: "tr",
-	  });	
+	if(result.isConfirmed || result.isDismissed){
+		Snackbar({
+			message: "<strong>Coming Soon.</strong>",
+			status: "info",
+			position: "tr",
+		});	
+	}
   })
 }
 
