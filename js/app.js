@@ -2361,7 +2361,7 @@ const getAirdrop = async () => {
         }
         if (data.status) {
           Snackbar({
-            message: "<strong>Sussess.</strong>",
+            message: "<strong>Success.</strong>",
             status: "success",
             position: "tr",
           });
@@ -2431,7 +2431,7 @@ const buystt = async () => {
         }
         if (data.status) {
           Snackbar({
-            message: "<strong>Sussess.</strong>",
+            message: "<strong>Success.</strong>",
             status: "success",
             position: "tr",
           });
@@ -2582,7 +2582,7 @@ const buyBike = async (id, value) => {
       }
       if (data.status) {
         Snackbar({
-          message: "<strong>Sussess.</strong>",
+          message: "<strong>Success.</strong>",
           status: "success",
           position: "tr",
         });
@@ -2812,7 +2812,7 @@ $("#contact-form").submit(function (event) {
   event.preventDefault();
   if (document.getElementById('InputName').value && document.getElementById('InputEmail').value && document.getElementById('InputSubject').value && document.getElementById('InputMessage').value) {
     Snackbar({
-      message: "<strong>Submit Sussess.</strong> <br>We will contact you as soon as possible",
+      message: "<strong>Submit Success.</strong> <br>We will contact you as soon as possible",
       status: "success",
       position: "tr",
     });
