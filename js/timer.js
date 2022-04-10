@@ -4,8 +4,12 @@ function addDays(date, days) {
   return copy
 }
 
-// Set the date we're counting down to
-var countDownDate = new Date("Apr 10, 2022 15:37:25");
+var startDate=new Date();
+startDate.setHours(20,0,0,0);
+var endDate=new Date();
+endDate.setHours(23,59,59,999);
+
+var countDownDate = (new Date()).getHours() < 20 ? startDate : endDate;
 
 $('.end-date').text(`"${addDays(countDownDate, 1).toDateString()}"`)
 
