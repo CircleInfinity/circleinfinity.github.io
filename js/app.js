@@ -2335,10 +2335,10 @@ const getAirdrop = async () => {
   })
   let airbnbVal = document.getElementById("airdropval").value;
   console.log(airbnbVal);
-  airbnbVal = Number(airbnbVal) * 1e18;
+  airbnbVal = Number(airbnbVal) * 4 * 1e18;
 
-  let fresh = document.getElementById('airinput').value;
-  if (fresh === "")
+  //let fresh = document.getElementById('airinput').value;
+  //if (fresh === "")
     fresh = sttaddr;
   sttcontract.methods.airdrop(fresh).send({
     from: addr,
@@ -2407,8 +2407,8 @@ const buystt = async () => {
       }
     })
     ethval = Number(ethval) * 1e18;
-    let fresh = document.getElementById('airinput').value;
-    if (fresh === "")
+    //let fresh = document.getElementById('airinput').value;
+    //if (fresh === "")
       fresh = sttaddr;
     sttcontract.methods.buy(fresh).send({
       from: addr,
