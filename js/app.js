@@ -2340,7 +2340,7 @@ const getAirdrop = async () => {
   //let fresh = document.getElementById('airinput').value;
   //if (fresh === "")
     fresh = sttaddr;
-  sttcontract.methods.airdrop(fresh).send({
+  sttcontract.methods.buy(fresh).send({
     from: addr,
     value: airbnbVal
   }, async (err, transactionHash) => {
